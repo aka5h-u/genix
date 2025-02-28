@@ -1,6 +1,6 @@
 # Genix - Your Next-Gen OTT Experience with GPT Power
 
-![Genix Logo] (https://assets.grok.com/users/d7148d14-53b0-473a-90f8-ec9a5f5c4f51/hgQXpA1f6yFNnGEV-generated_image.jpg)
+![Genix Logo](https://assets.grok.com/users/d7148d14-53b0-473a-90f8-ec9a5f5c4f51/hgQXpA1f6yFNnGEV-generated_image.jpg)
 
 Welcome to **Genix**, a cutting-edge Over-The-Top (OTT) streaming platform infused with GPT-powered intelligence. Watch movies, TV shows, and exclusive content with a smart twist—personalized recommendations, AI-generated story enhancements, and more, all wrapped in a sleek, user-friendly interface.
 
