@@ -1,12 +1,52 @@
-# React + Vite
+# Genix - Your Next-Gen OTT Experience with GPT Power
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://assets.grok.com/users/d7148d14-53b0-473a-90f8-ec9a5f5c4f51/hgQXpA1f6yFNnGEV-generated_image.jpg
 
-Currently, two official plugins are available:
+Welcome to **Genix**, a cutting-edge Over-The-Top (OTT) streaming platform infused with GPT-powered intelligence. Watch movies, TV shows, and exclusive content with a smart twist—personalized recommendations, AI-generated story enhancements, and more, all wrapped in a sleek, user-friendly interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌟 Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Authentication**  
+  Secure login and signup with JWT-based user sessions. Your entertainment, your rules.
+
+- **Protected Routes**  
+  Access premium content and user-specific features only when authenticated—privacy and exclusivity guaranteed.
+
+- **GPT-Powered Recommendations**  
+  Say goodbye to endless scrolling. Our GPT engine analyzes your tastes and suggests movies and shows tailored just for you.
+
+- **AI Story Enhancer**  
+  Get creative synopses, alternate endings, or even character backstories generated on the fly by GPT—elevate your viewing experience.
+
+- **Dynamic Watchlists**  
+  Build and manage personalized watchlists with smart sorting options powered by AI insights.
+
+- **Interactive Chat**  
+  Chat with friends in real-time during streams, with GPT suggesting witty replies or fun trivia about what you’re watching.
+
+- **Cross-Platform Sync**  
+  Start watching on your phone, finish on your TV—seamless sync across devices.
+
+- **Content Generator**  
+  Experimental feature: Let GPT craft short original films or episode teasers based on your prompts.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)
+- npm or Yarn
+- A modern browser (Chrome, Firefox, etc.)
+- OpenAI API key (for GPT features)
+
+### Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/genix.git
+   cd genix
+   ```
