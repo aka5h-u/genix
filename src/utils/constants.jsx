@@ -9,3 +9,5 @@ export const API_OPTIONS = {
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2YTg0YTE0NDhlZDllOWY1Yjk1OGZhOTM1ZGMwNDk3MCIsIm5iZiI6MTc0MDk4Nzg5Ni41NzcsInN1YiI6IjY3YzU1ZGY4NGIxNjM5OTA0YWU3NWRhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XpKGLntJ55kiFPCKLCHXY1l7QgRzzYpUqKcHrH02yHs",
   },
 };
+
+export const MOVIE_THUMBNAIL_URL = "https://image.tmdb.org/t/p/w780/";
