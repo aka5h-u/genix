@@ -9,12 +9,11 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errMsg, setErrMsg] = useState("");
   const [nameValidErr, setNameValid] = useState("");
@@ -30,7 +29,7 @@ const Login = () => {
       //console.log("Name is", isNameValid);
       //setNameValid(isNameValid);
       if (errMsg) return;
-
+      console.log(name.current.value);
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
@@ -38,17 +37,20 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
+          console.log("New user");
           const user = userCredential.user;
           //const auth = getAuth();
           updateProfile(user, {
             displayName: name.current.value,
+
             photoURL: "https://avatars.githubusercontent.com/u/20208296?v=4",
           })
             .then(() => {
               // Profile updated!
               // ...
-              const { uid, email, displayName, photoURL } = user;
-              console.log(user.displayName);
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              console.log(user.email);
+
               dispatch(
                 addUser({
                   uid: uid,
@@ -57,7 +59,7 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
+              //navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -83,8 +85,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("Successful sign in");
-          navigate("/browse");
+          //console.log("Successful sign in");
+          //navigate("/browse");
 
           // ...
         })
