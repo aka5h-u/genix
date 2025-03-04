@@ -1,7 +1,7 @@
 import React from "react";
 import MovieCard from "./MovieCard";
 const MovieList = ({ title, movies }) => {
-  console.log("Movie data :", movies);
+  //  console.log("Movie data :", movies);
   //const { poster_path } = movies[0];
   //console.log("Movie data :", poster_path);
   return (

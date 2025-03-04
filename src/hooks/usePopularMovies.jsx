@@ -11,7 +11,7 @@ const usePopularMovies = () => {
       API_OPTIONS
     );
     const json = await data.json();
-    console.log("Pop movies-----------", json.results);
+    // console.log("Pop movies-----------", json.results);
     dispatch(addPopularMovies(json.results));
   };
   useEffect(() => {

@@ -9,7 +9,7 @@ const VideoTitle = ({ title, overview }) => {
         <button class=" cursor-pointer  bg-white text-black text-xl  px-10 py-2 rounded-md flex items-center gap-2 hover:bg-gray-200  *:transition">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 fill-current"
+            className="w-6 h-6 fill-current"
             viewBox="0 0 24 24"
           >
             <path d="M8 5v14l11-7z" />
