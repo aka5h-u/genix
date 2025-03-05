@@ -67,7 +67,8 @@ const Header = () => {
       <Link to="/browse">
         <img alt="logo" src="logo3.png" className="w-26" />
       </Link>
-      <div className="ml-260 ">
+
+      <div className="flex items-center gap-4">
         {showGpt && (
           <select
             className="bg-gray-900 ml-50 mr-5 text-white "
@@ -80,15 +81,19 @@ const Header = () => {
             ))}
           </select>
         )}
+        {/* <button
+          className="mr-2 py-3  w-[43px] cursor-pointer hover:opacity-80 bg-brand-charcoal rounded-full text-white font-semibold"
+          onClick={handleGptSearch}
+        >
+          <Rocket className="mt-2" />
+        </button> */}
+
         <button
           className="mr-2 py-3  w-[43px] cursor-pointer hover:opacity-80 bg-brand-charcoal rounded-full text-white font-semibold"
           onClick={handleGptSearch}
         >
           <Rocket className="mt-2" />
         </button>
-      </div>
-
-      <div className="flex">
         <img
           src="https://occ-0-3973-3662.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png?r=e6e"
           alt="user-img"
