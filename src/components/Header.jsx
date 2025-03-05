@@ -11,6 +11,7 @@ import { Rocket } from "lucide-react";
 import { toggleGptSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
+import { Link } from "react-router-dom";
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
@@ -63,7 +64,9 @@ const Header = () => {
   }, []);
   return (
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-screen flex justify-between align-middle">
-      <img alt="logo" src="logo3.png" className="w-26" />
+      <Link to="/browse">
+        <img alt="logo" src="logo3.png" className="w-26" />
+      </Link>
       <div className="ml-260 ">
         {showGpt && (
           <select
