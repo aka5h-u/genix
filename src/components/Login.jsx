@@ -3,6 +3,7 @@ import Header from "./Header";
 import { BG_URL } from "../utils/constants";
 import { useState, useRef } from "react";
 import { checkValidData, validateName } from "../utils/validate";
+import { Link } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
