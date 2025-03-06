@@ -13,87 +13,96 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 const Login = () => {
   const dispatch = useDispatch();
-  //const navigate = useNavigate();
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errMsg, setErrMsg] = useState("");
-  const [nameValidErr, setNameValid] = useState("");
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  //const auth = getAuth();
+
+  const checkValidData = (email, password) => {
+    if (!email.includes("@")) return "Invalid email";
+    if (password.length < 6) return "Password must be at least 6 characters";
+    return null;
+  };
+
   const handleButtonClick = () => {
-    const errMsg = checkValidData(email.current.value, password.current.value);
+    console.log("--- New Signup Attempt ---");
+    console.log("Form state:", { isSignInForm });
+    const emailValue = email.current.value;
+    const passwordValue = password.current.value;
+    const nameValue = name.current ? name.current.value : "N/A";
+
+    const errMsg = checkValidData(emailValue, passwordValue);
     setErrMsg(errMsg);
+    if (errMsg) {
+      console.log("Validation failed:", errMsg);
+      return;
+    }
+
     if (!isSignInForm) {
-      //const isNameValid = validateName(name.current.value);  /fix this
-      //console.log("Name is", isNameValid);
-      //setNameValid(isNameValid);
-      if (errMsg) return;
-      console.log(name.current.value);
-      createUserWithEmailAndPassword(
-        auth,
-        email.current.value,
-        password.current.value
-      )
-        .then((userCredential) => {
-          // Signed up
-          console.log("New user");
-          const user = userCredential.user;
-          //const auth = getAuth();
-          updateProfile(user, {
-            displayName: name.current.value,
+      console.log("Signup inputs:", {
+        email: emailValue,
+        password: passwordValue,
+        name: nameValue,
+      });
 
+      createUserWithEmailAndPassword(auth, emailValue, passwordValue)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("User created:", {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+          });
+
+          if (!nameValue) {
+            console.warn("Name input is empty or undefined!");
+          }
+
+          return updateProfile(user, {
+            displayName: nameValue || "Default User",
             photoURL: "https://avatars.githubusercontent.com/u/20208296?v=4",
-          })
-            .then(() => {
-              // Profile updated!
-              // ...
-              const { uid, email, displayName, photoURL } = auth.currentUser;
-              console.log(user.email);
+          });
+        })
+        .then(() => {
+          console.log("Profile update requested");
+          return auth.currentUser.reload();
+        })
+        .then(() => {
+          const updatedUser = auth.currentUser;
+          console.log("Updated user after reload:", {
+            uid: updatedUser.uid,
+            email: updatedUser.email,
+            displayName: updatedUser.displayName,
+            photoURL: updatedUser.photoURL,
+          });
 
-              dispatch(
-                addUser({
-                  uid: uid,
-                  email: email,
-                  displayName: displayName,
-                  photoURL: photoURL,
-                })
-              );
-              //navigate("/browse");
+          dispatch(
+            addUser({
+              uid: updatedUser.uid,
+              email: updatedUser.email,
+              displayName: updatedUser.displayName,
+              photoURL: updatedUser.photoURL,
             })
-            .catch((error) => {
-              // An error occurred
-              // ...
-              setErrMsg(error);
-            });
-          console.log(user);
-          // ...
+          );
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrMsg(errorCode + "-" + errorMessage);
-          // ..
+          console.error(
+            "Error during signup or profile update:",
+            error.code,
+            error.message
+          );
+          setErrMsg(`${error.code} - ${error.message}`);
         });
-      setIsSignInForm(!isSignInForm);
     } else {
-      signInWithEmailAndPassword(
-        auth,
-        email.current.value,
-        password.current.value
-      )
+      signInWithEmailAndPassword(auth, emailValue, passwordValue)
         .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          //console.log("Successful sign in");
-          //navigate("/browse");
-
-          // ...
+          console.log("Sign-in successful:", userCredential.user.email);
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrMsg(errorCode + "-" + errorMessage);
+          console.error("Sign-in error:", error.code, error.message);
+          setErrMsg(`${error.code} - ${error.message}`);
         });
     }
   };
@@ -101,6 +110,7 @@ const Login = () => {
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
+
   return (
     <div>
       <Header />
@@ -138,7 +148,7 @@ const Login = () => {
           <p className="text-red-500 py-2 font-bold text-lg">{errMsg}</p>
         )}
         {!isSignInForm && (
-          <p className="text-red-500 py-2 font-bold text-lg">{nameValidErr}</p>
+          <p className="text-red-500 py-2 font-bold text-lg">{errMsg}</p> //nameValidErr
         )}
         <button
           className="p-4 my-5 bg-red-600 text-white w-full rounded-lg cursor-pointer hover:bg-red-700"

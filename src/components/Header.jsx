@@ -12,11 +12,13 @@ import { toggleGptSearchView } from "../utils/gptSlice";
 import { SUPPORTED_LANGUAGES } from "../utils/constants";
 import { changeLanguage } from "../utils/configSlice";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const showGpt = useSelector((store) => store.gpt.showGptSearch);
   const navigate = useNavigate();
+  const [photo, setPhoto] = useState();
   const handleGptSearch = () => {
     dispatch(toggleGptSearchView());
   };
@@ -42,6 +44,7 @@ const Header = () => {
         // https://firebase.google.com/docs/reference/js/auth.user
         const { uid, email, displayName, photoURL } = user;
         console.log(displayName);
+        setPhoto(photoURL);
         dispatch(
           addUser({
             uid: uid,
@@ -71,7 +74,7 @@ const Header = () => {
       <div className="flex items-center gap-4">
         {showGpt && (
           <select
-            className="bg-gray-900 ml-50 mr-5 text-white "
+            className="bg-gray-900 ml-50 mr-5 mt-3 text-white "
             onChange={handleLanguageChange}
           >
             {SUPPORTED_LANGUAGES.map((lang) => (
@@ -89,17 +92,16 @@ const Header = () => {
         </button> */}
 
         <button
-          className="mr-2 py-3  w-[43px] cursor-pointer hover:opacity-80 bg-brand-charcoal rounded-full text-white font-semibold"
+          className="mr-2 py-3 mt-2 w-[43px] cursor-pointer hover:opacity-80 bg-brand-charcoal rounded-full text-white font-semibold"
           onClick={handleGptSearch}
         >
           <Rocket className="mt-2" />
         </button>
         <img
           src="https://occ-0-3973-3662.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABXz4LMjJFidX8MxhZ6qro8PBTjmHbxlaLAbk45W1DXbKsAIOwyHQPiMAuUnF1G24CLi7InJHK4Ge4jkXul1xIW49Dr5S7fc.png?r=e6e"
+          className="w-10 h-10 rounded-full  mt-3 cursor-pointer"
           alt="user-img"
-          className="mt-3 cursor-pointer"
         />
-
         <button
           className="font-bold text-white p-3 "
           onClick={signOutBtnHandler}

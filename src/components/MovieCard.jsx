@@ -6,7 +6,7 @@ const MovieCard = ({ path, id }) => {
   if (!id) return;
   return (
     <Link to={"/browse/" + id}>
-      <div className="w-48 pr-6 cursor-pointer ">
+      <div className="w-48 pr-6 cursor-pointer transition-transform duration-200 hover:scale-110">
         <img
           alt="movie-card"
           className="rounded-lg"
