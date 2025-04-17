@@ -6,11 +6,16 @@ const MovieCard = ({ path, id }) => {
   if (!id) return;
   return (
     <Link to={"/browse/" + id}>
-      <div className="w-48 pr-6 cursor-pointer transition-transform duration-200 hover:scale-110">
+      <div className="w-32 sm:w-40 md:w-48 cursor-pointer overflow-hidden transition-transform duration-200 hover:scale-105 shrink-0">
         <img
           alt="movie-card"
-          className="rounded-lg"
-          src={MOVIE_THUMBNAIL_URL + path}
+          className="w-full h-48 sm:h-56 md:h-64 rounded-lg object-cover"
+          src={
+            MOVIE_THUMBNAIL_URL + path || "https://via.placeholder.com/200x300"
+          }
+          onError={(e) => {
+            e.target.src = "https://via.placeholder.com/200x300";
+          }}
         />
       </div>
     </Link>

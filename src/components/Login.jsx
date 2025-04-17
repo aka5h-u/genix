@@ -113,60 +113,71 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="relative min-h-screen">
       <Header />
-      <div className="absolute">
-        <img alt="bgc-image" src={BG_URL} />
+      <div className="absolute w-full h-full -z-10">
+        <img
+          alt="bgc-image"
+          src={BG_URL}
+          className="w-full h-full object-cover"
+        />
       </div>
-      <form
-        className="absolute p-12 bg-black opacity-80 w-3/12 mt-36 mx-auto left-0 right-0 rounded-lg "
-        onSubmit={(e) => e.preventDefault()}
-      >
-        <h1 className="font-bold text-3xl text-white py-4">
-          {isSignInForm ? "Sign In" : "Sign Up"}
-        </h1>
-        {!isSignInForm && (
-          <input
-            ref={name}
-            type="text"
-            placeholder="Full Name"
-            className="p-3 my-3 bg-gray-700 w-full  text-gray-50 rounded-md "
-          />
-        )}
-        <input
-          ref={email}
-          type="text"
-          placeholder="Email address"
-          className="p-3 my-3 bg-gray-700 w-full  text-gray-50 rounded-md "
-        />
-        <input
-          ref={password}
-          type="password"
-          placeholder="Enter your password"
-          className="p-3  my-5 bg-gray-700 w-full text-gray-100 rounded-md"
-        />
-        {errMsg && (
-          <p className="text-red-500 py-2 font-bold text-lg">{errMsg}</p>
-        )}
-        {!isSignInForm && (
-          <p className="text-red-500 py-2 font-bold text-lg">{errMsg}</p> //nameValidErr
-        )}
-        <button
-          className="p-4 my-5 bg-red-600 text-white w-full rounded-lg cursor-pointer hover:bg-red-700"
-          onClick={handleButtonClick}
-        >
-          {isSignInForm ? "Sign In" : "Sign Up"}
-        </button>
 
-        <p
-          className="text-white my-4 cursor-pointer "
-          onClick={toggleSignInForm}
+      {/* Flex container to center the form */}
+      <div className="flex justify-center items-center min-h-screen">
+        <form
+          className="p-8 sm:p-12 bg-black bg-opacity-80 w-11/12 sm:w-8/12 md:w-5/12 lg:w-3/12 rounded-lg"
+          onSubmit={(e) => e.preventDefault()}
         >
-          {isSignInForm
-            ? "New to Neflix? Sign Up Now"
-            : "Already registered? Sign In Now"}
-        </p>
-      </form>
+          <h1 className="font-bold text-2xl sm:text-3xl text-white py-4">
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </h1>
+
+          {!isSignInForm && (
+            <input
+              ref={name}
+              type="text"
+              placeholder="Full Name"
+              className="p-3 my-2 bg-gray-700 w-full text-gray-50 rounded-md"
+            />
+          )}
+
+          <input
+            ref={email}
+            type="text"
+            placeholder="Email address"
+            className="p-3 my-2 bg-gray-700 w-full text-gray-50 rounded-md"
+          />
+          <input
+            ref={password}
+            type="password"
+            placeholder="Enter your password"
+            className="p-3 my-2 bg-gray-700 w-full text-gray-100 rounded-md"
+          />
+
+          {errMsg && (
+            <p className="text-red-500 py-2 font-bold text-sm sm:text-lg">
+              {errMsg}
+            </p>
+          )}
+
+          <button
+            className="p-3 sm:p-4 my-4 bg-red-600 text-white w-full rounded-lg hover:bg-red-700"
+            onClick={handleButtonClick}
+          >
+            {isSignInForm ? "Sign In" : "Sign Up"}
+          </button>
+
+          <p
+            className="text-white my-4 text-center cursor-pointer text-sm sm:text-base"
+            onClick={toggleSignInForm}
+          >
+            {isSignInForm
+              ? "New to Genix? Sign Up Now"
+              : "Already registered? Sign In Now"}
+          </p>
+        </form>
+      </div>
     </div>
   );
 };

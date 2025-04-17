@@ -5,20 +5,21 @@ const MovieList = ({ title, movies }) => {
   //const { poster_path } = movies[0];
   //console.log("Movie data :", poster_path);
   return (
-    <div className="px-6  text-white">
-      <h1 className="text-3xl py-4">{title}</h1>
-      <div className="flex overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-        <div className="flex ">
-          {movies?.map((movie) => {
-            return (
-              <MovieCard
-                key={movie?.id}
-                id={movie?.id}
-                path={movie?.poster_path}
-              />
-            );
-          })}
-        </div>
+    <div className="px-4 sm:px-6 text-white mt-2">
+      <h1 className="text-xl sm:text-2xl md:text-3xl py-1">{title}</h1>
+      <div
+        className="flex overflow-x-auto space-x-4 pb-4 snap-x"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {movies?.map((movie) => (
+          <MovieCard key={movie?.id} id={movie?.id} path={movie?.poster_path} />
+        ))}
+        {/* Hide scrollbar for WebKit browsers */}
+        <style jsx>{`
+          .flex::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
       </div>
     </div>
   );
